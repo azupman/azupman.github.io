@@ -5,7 +5,7 @@
     <title>Vendredi 28 – Invitation pour Céline</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts (facultatif mais ça marche très bien sur GitHub Pages) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -45,9 +45,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ------------------------------
-           Layout
-        ------------------------------ */
         .page {
             max-width: 1040px;
             margin: 2.5rem auto 3rem;
@@ -204,6 +201,18 @@
             filter: brightness(1.03);
         }
 
+        .button-secondary {
+            background: transparent;
+            box-shadow: none;
+            border: 1px solid rgba(248, 250, 252, 0.7);
+            margin-left: 0.6rem;
+        }
+
+        .button-secondary:hover {
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+            background: rgba(15, 23, 42, 0.2);
+        }
+
         /* ------------------------------
            Blocks & animations
         ------------------------------ */
@@ -217,25 +226,12 @@
             animation: floatUp 0.7s ease-out both;
         }
 
-        .block-intro {
-            animation-delay: 0.08s;
-        }
+        .block-intro { animation-delay: 0.08s; }
+        .block-programme { animation-delay: 0.16s; }
+        .block-details { animation-delay: 0.24s; }
+        .block-final { animation-delay: 0.32s; }
 
-        .block-programme {
-            animation-delay: 0.16s;
-        }
-
-        .block-details {
-            animation-delay: 0.24s;
-        }
-
-        .block-final {
-            animation-delay: 0.32s;
-        }
-
-        .block-header {
-            margin-bottom: 1.4rem;
-        }
+        .block-header { margin-bottom: 1.4rem; }
 
         .block-header h2 {
             font-family: "Playfair Display", serif;
@@ -519,11 +515,16 @@
 
         .final-actions {
             margin: 1.4rem 0 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
         }
 
         .form-intro {
+            width: 100%;
             font-size: 0.88rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.3rem;
             color: #cbd5f5;
         }
 
@@ -619,6 +620,15 @@
             .quiz-options {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .final-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .button-secondary {
+                margin-left: 0;
             }
         }
     </style>
@@ -927,6 +937,9 @@
                     <button type="button" class="button-main" id="prepare-message">
                         Préparer mon message
                     </button>
+                    <button type="button" class="button-main button-secondary" id="add-calendar">
+                        Ajouter au calendrier
+                    </button>
                 </div>
 
                 <div id="sms-preview" class="sms-preview hidden">
@@ -956,8 +969,7 @@
         const smsPreview = document.getElementById('sms-preview');
         const smsTextEl = document.getElementById('sms-text');
         const smsLink = document.getElementById('sms-send');
-
-        if (!prepareBtn) return;
+        const addCalendarBtn = document.getElementById('add-calendar');
 
         function buildNiceList(items) {
             if (items.length === 0) return "";
@@ -966,51 +978,91 @@
             return items.slice(0, -1).join(", ") + " et " + items[items.length - 1];
         }
 
-        prepareBtn.addEventListener('click', function () {
-            const activityCheckboxes = document.querySelectorAll('.activity-checkbox');
-            const quizOptions = document.querySelectorAll('.quiz-option');
+        if (prepareBtn) {
+            prepareBtn.addEventListener('click', function () {
+                const activityCheckboxes = document.querySelectorAll('.activity-checkbox');
+                const quizOptions = document.querySelectorAll('.quiz-option');
 
-            const selectedActivities = [];
-            const selectedQuiz = [];
+                const selectedActivities = [];
+                const selectedQuiz = [];
 
-            activityCheckboxes.forEach(function (cb) {
-                if (cb.checked) {
-                    const label = cb.getAttribute('data-label') || cb.value;
-                    if (label) selectedActivities.push(label);
+                activityCheckboxes.forEach(function (cb) {
+                    if (cb.checked) {
+                        const label = cb.getAttribute('data-label') || cb.value;
+                        if (label) selectedActivities.push(label);
+                    }
+                });
+
+                quizOptions.forEach(function (cb) {
+                    if (cb.checked) {
+                        const label = cb.getAttribute('data-label') || cb.value;
+                        if (label) selectedQuiz.push(label);
+                    }
+                });
+
+                let body = "Salut, pour le vendredi 28 je suis partante. 😊";
+
+                if (selectedActivities.length > 0) {
+                    const list = buildNiceList(selectedActivities);
+                    body += "\n\nLes moments qui me tentent : " + list + ".";
+                } else {
+                    body += "\n\nL’idée de la journée me plaît, on verra ensemble pour les détails.";
                 }
-            });
 
-            quizOptions.forEach(function (cb) {
-                if (cb.checked) {
-                    const label = cb.getAttribute('data-label') || cb.value;
-                    if (label) selectedQuiz.push(label);
+                if (selectedQuiz.length > 0) {
+                    const quizList = buildNiceList(selectedQuiz);
+                    body += "\n\nPour l’organisation : " + quizList + ".";
                 }
+
+                body += "\n\nOn se retrouve bien chez moi à 14h pour que tu déposes ta valise, et c’est bon pour le bus de 23h à Bercy pour Amsterdam.";
+
+                smsTextEl.textContent = body;
+                smsPreview.classList.remove('hidden');
+
+                const phone = "0614821949";
+                const encodedBody = encodeURIComponent(body);
+                const href = "sms:" + phone + "?body=" + encodedBody;
+                smsLink.setAttribute("href", href);
             });
+        }
 
-            let body = "Salut, pour le vendredi 28 je suis partante. 😊";
+        if (addCalendarBtn) {
+            addCalendarBtn.addEventListener('click', function () {
+                // Date fixée : vendredi 28 (à adapter si besoin)
+                // Heure locale sans fuseau (interprétée en local par l’iPhone)
+                const lines = [
+                    "BEGIN:VCALENDAR",
+                    "VERSION:2.0",
+                    "PRODID:-//azupman//SortieCeline//FR",
+                    "BEGIN:VEVENT",
+                    "UID:" + Date.now() + "@azupman",
+                    "DTSTAMP:20251120T120000Z",
+                    "DTSTART:20251128T140000",
+                    "DTEND:20251128T230000",
+                    "SUMMARY:Sortie avec Céline - Paris",
+                    "DESCRIPTION:14h00-14h20 : chez toi (4 rue Edmond Rousse, Paris 14e)\\n14h20-15h00 : trajet vers le Tribunal\\n15h00-17h00 : Tribunal de Paris\\n17h00-17h30 : trajet On Air Malakoff\\n17h30-20h00 : séance de sport\\n20h00-20h30 : retour / départ pour Light Cycles\\n21h00-22h00 : Light Cycles Paris\\n22h00-22h20 : petites courses\\n22h20-22h40 : petit truc à manger\\n22h40-23h00 : gare de Bercy, bus pour Amsterdam",
+                    "LOCATION:Paris",
+                    "END:VEVENT",
+                    "END:VCALENDAR"
+                ];
 
-            if (selectedActivities.length > 0) {
-                const list = buildNiceList(selectedActivities);
-                body += "\n\nLes moments qui me tentent : " + list + ".";
-            } else {
-                body += "\n\nL’idée de la journée me plaît, on verra ensemble pour les détails.";
-            }
+                const icsContent = lines.join("\r\n");
+                const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
 
-            if (selectedQuiz.length > 0) {
-                const quizList = buildNiceList(selectedQuiz);
-                body += "\n\nPour l’organisation : " + quizList + ".";
-            }
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "sortie-avec-celine.ics";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
 
-            body += "\n\nOn se retrouve bien chez moi à 14h pour que tu déposes ta valise, et c’est bon pour le bus de 23h à Bercy pour Amsterdam.";
-
-            smsTextEl.textContent = body;
-            smsPreview.classList.remove('hidden');
-
-            const phone = "0614821949";
-            const encodedBody = encodeURIComponent(body);
-            const href = "sms:" + phone + "?body=" + encodedBody;
-            smsLink.setAttribute("href", href);
-        });
+                // Libérer l'URL plus tard
+                setTimeout(function () {
+                    URL.revokeObjectURL(url);
+                }, 2000);
+            });
+        }
     });
 </script>
 </body>
