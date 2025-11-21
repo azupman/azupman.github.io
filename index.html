@@ -31,9 +31,7 @@
             --radius-pill: 999px;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -112,9 +110,7 @@
         /* ------------------------------
            Hero
         ------------------------------ */
-        .hero {
-            margin-bottom: 2.5rem;
-        }
+        .hero { margin-bottom: 2.5rem; }
 
         .hero-content {
             background: rgba(255, 255, 255, 0.95);
@@ -160,9 +156,7 @@
             margin-bottom: 1.6rem;
         }
 
-        .hero-extra {
-            margin-bottom: 1.3rem;
-        }
+        .hero-extra { margin-bottom: 1.3rem; }
 
         .panda-tag {
             display: inline-flex;
@@ -223,10 +217,10 @@
             animation: floatUp 0.7s ease-out both;
         }
 
-        .block-intro { animation-delay: 0.08s; }
+        .block-intro   { animation-delay: 0.08s; }
         .block-programme { animation-delay: 0.16s; }
         .block-details { animation-delay: 0.24s; }
-        .block-final { animation-delay: 0.32s; }
+        .block-final   { animation-delay: 0.32s; }
 
         .block-header { margin-bottom: 1.4rem; }
 
@@ -344,11 +338,9 @@
             font-weight: 500;
         }
 
-        .activity-choice {
-            margin-top: 0.75rem;
-        }
+        .activity-choice { margin-top: 0.75rem; }
 
-        /* Images des activités */
+        /* Images des activités (pour tribunal & resto) */
         .step-image {
             margin-bottom: 0.8rem;
             border-radius: var(--radius-medium);
@@ -369,9 +361,7 @@
             cursor: pointer;
         }
 
-        .choice-pill input {
-            display: none;
-        }
+        .choice-pill input { display: none; }
 
         .pill-visual {
             display: inline-flex;
@@ -692,9 +682,6 @@
                         <span class="step-icon">🏠</span>
                     </div>
                     <div class="step-body">
-                        <div class="step-image">
-                            <img src="https://via.placeholder.com/600x360?text=Chez+toi" alt="Chez toi - point de départ">
-                        </div>
                         <h3>Chez toi – point de départ</h3>
                         <p class="step-time">14h00 – 14h20</p>
                         <p>
@@ -717,7 +704,7 @@
                     </div>
                 </article>
 
-                <!-- Étape 2 : Tribunal -->
+                <!-- Étape 2 : Tribunal (AVEC IMAGE) -->
                 <article class="step">
                     <div class="step-meta">
                         <span class="step-number">02</span>
@@ -725,7 +712,8 @@
                     </div>
                     <div class="step-body">
                         <div class="step-image">
-                            <img src="https://via.placeholder.com/600x360?text=Tribunal+de+Paris" alt="Tribunal de Paris">
+                            <!-- Remplace tribunal.jpg par ta photo locale -->
+                            <img src="imagestribunal.jpg" alt="Tribunal de Paris">
                         </div>
                         <h3>Tribunal de Paris</h3>
                         <p class="step-time">15h00 – 17h00</p>
@@ -745,16 +733,13 @@
                     </div>
                 </article>
 
-                <!-- Étape 3 : On Air + retour douche -->
+                <!-- Étape 3 : On Air + retour douche (SANS IMAGE) -->
                 <article class="step">
                     <div class="step-meta">
                         <span class="step-number">03</span>
                         <span class="step-icon">🏋️</span>
                     </div>
                     <div class="step-body">
-                        <div class="step-image">
-                            <img src="https://via.placeholder.com/600x360?text=On+Air+Malakoff" alt="Salle de sport On Air Malakoff">
-                        </div>
                         <h3>On Air Malakoff – séance de sport</h3>
                         <p class="step-time">17h00 – 17h30</p>
                         <p>
@@ -802,7 +787,7 @@
                     </div>
                 </article>
 
-                <!-- Étape 4 : Courses + resto + bus -->
+                <!-- Étape 4 : Courses + resto + bus (AVEC IMAGE) -->
                 <article class="step">
                     <div class="step-meta">
                         <span class="step-number">04</span>
@@ -810,7 +795,8 @@
                     </div>
                     <div class="step-body">
                         <div class="step-image">
-                            <img src="https://via.placeholder.com/600x360?text=Courses+%2B+Resto+%2B+Bus" alt="Courses, restaurant et bus pour Amsterdam">
+                            <!-- Remplace stellar.jpg par ta photo locale du resto -->
+                            <img src="imagesstellar.jpg" alt="Restaurant Stellar by Ephemera">
                         </div>
                         <h3>Courses, restaurant et bus pour Amsterdam</h3>
 
@@ -1048,7 +1034,7 @@
             return items.slice(0, -1).join(", ") + " et " + items[items.length - 1];
         }
 
-        // Quand elle choisit dans le programme, ça coche le quiz correspondant
+        // Programme → coche automatiquement le quiz
         programChoices.forEach(function (pc) {
             pc.addEventListener('change', function () {
                 if (!this.checked) return;
@@ -1105,7 +1091,6 @@
 
                 const phone = "0614821949";
                 const encodedBody = encodeURIComponent(body);
-                // Format qui marche mieux sur pas mal de téléphones
                 const href = "sms:" + phone + "&body=" + encodedBody;
                 smsLink.setAttribute("href", href);
             });
@@ -1125,7 +1110,6 @@
 
         if (addCalendarBtn) {
             addCalendarBtn.addEventListener('click', function () {
-                // On adapte la ligne "restaurant" en fonction du choix
                 const restoSelected = document.querySelector('input[name="restoChoice"]:checked');
                 let restoLine;
                 if (restoSelected) {
