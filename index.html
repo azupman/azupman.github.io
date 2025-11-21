@@ -12,9 +12,7 @@
         /* ------------------------------
            Reset & base
         ------------------------------ */
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -26,7 +24,6 @@
             --text-main: #171717;
             --text-soft: #4b5563;
             --accent: #f97373;
-            --accent-soft: #fde2e2;
             --border-subtle: #e5e7eb;
             --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
             --radius-large: 24px;
@@ -252,14 +249,8 @@
         }
 
         @keyframes floatUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -272,9 +263,7 @@
         /* ------------------------------
            Programme / Timeline
         ------------------------------ */
-        .block-programme {
-            padding-bottom: 2.3rem;
-        }
+        .block-programme { padding-bottom: 2.3rem; }
 
         .timeline {
             display: flex;
@@ -292,7 +281,7 @@
             top: 0.2rem;
             bottom: 0.2rem;
             width: 1px;
-            background: linear-gradient(to bottom, rgba(209, 213, 219, 0.2), rgba(209, 213, 219, 0.9));
+            background: linear-gradient(to bottom, rgba(209,213,219,0.2), rgba(209,213,219,0.9));
         }
 
         .step {
@@ -334,7 +323,7 @@
             background: #f9fafb;
             border-radius: var(--radius-medium);
             padding: 1.1rem 1.1rem 1rem;
-            border: 1px solid rgba(229, 231, 235, 0.9);
+            border: 1px solid rgba(229,231,235,0.9);
         }
 
         .step h3 {
@@ -359,6 +348,22 @@
             margin-top: 0.75rem;
         }
 
+        /* Images des activités */
+        .step-image {
+            margin-bottom: 0.8rem;
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+            background: #e5e7eb;
+        }
+
+        .step-image img {
+            display: block;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        /* Pills */
         .choice-pill {
             display: inline-block;
             cursor: pointer;
@@ -379,7 +384,7 @@
             font-size: 0.8rem;
             color: #4b5563;
             transition: background 0.15s ease, border-color 0.15s ease,
-            box-shadow 0.15s ease, transform 0.1s ease;
+                        box-shadow 0.15s ease, transform 0.1s ease;
         }
 
         .pill-dot {
@@ -411,9 +416,7 @@
         /* ------------------------------
            Détails pratiques
         ------------------------------ */
-        .block-details {
-            padding-bottom: 2.3rem;
-        }
+        .block-details { padding-bottom: 2.3rem; }
 
         .details-grid {
             display: grid;
@@ -453,9 +456,7 @@
             box-shadow: 0 24px 50px rgba(15, 23, 42, 0.5);
         }
 
-        .final-card {
-            max-width: 640px;
-        }
+        .final-card { max-width: 640px; }
 
         .block-final h2 {
             font-family: "Playfair Display", serif;
@@ -469,9 +470,7 @@
             line-height: 1.7;
         }
 
-        .quiz {
-            margin-top: 1.4rem;
-        }
+        .quiz { margin-top: 1.4rem; }
 
         .quiz h3 {
             font-size: 1rem;
@@ -479,9 +478,7 @@
             color: #e5e7eb;
         }
 
-        .quiz-question {
-            margin-bottom: 1rem;
-        }
+        .quiz-question { margin-bottom: 1rem; }
 
         .quiz-label {
             font-size: 0.86rem;
@@ -536,9 +533,7 @@
             border: 1px solid rgba(148, 163, 184, 0.8);
         }
 
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
 
         .sms-label {
             font-size: 0.78rem;
@@ -553,6 +548,7 @@
             color: #e5e7eb;
             margin-bottom: 0.7rem;
             word-break: break-word;
+            white-space: pre-wrap;
         }
 
         .sms-button {
@@ -675,7 +671,7 @@
                 <h2>Le principe</h2>
                 <p>
                     Tout est déjà pensé, mais rien n’est figé. Tu peux regarder le déroulé,
-                    cocher ce qui te plaît, répondre au petit quiz, puis préparer un message
+                    choisir ce qui te parle, répondre au petit quiz, puis préparer un message
                     à m’envoyer. L’idée est de se garder cette journée, sans pression, juste à deux.
                 </p>
             </div>
@@ -696,6 +692,9 @@
                         <span class="step-icon">🏠</span>
                     </div>
                     <div class="step-body">
+                        <div class="step-image">
+                            <img src="https://via.placeholder.com/600x360?text=Chez+toi" alt="Chez toi - point de départ">
+                        </div>
                         <h3>Chez toi – point de départ</h3>
                         <p class="step-time">14h00 – 14h20</p>
                         <p>
@@ -708,7 +707,7 @@
                         </p>
                         <div class="activity-choice">
                             <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="rendez-vous chez moi à 14h">
+                                <input type="checkbox" class="activity-input" data-label="rendez-vous chez moi à 14h">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">OK pour 14h chez moi</span>
@@ -725,6 +724,9 @@
                         <span class="step-icon">⚖️</span>
                     </div>
                     <div class="step-body">
+                        <div class="step-image">
+                            <img src="https://via.placeholder.com/600x360?text=Tribunal+de+Paris" alt="Tribunal de Paris">
+                        </div>
                         <h3>Tribunal de Paris</h3>
                         <p class="step-time">15h00 – 17h00</p>
                         <p>
@@ -733,7 +735,7 @@
                         </p>
                         <div class="activity-choice">
                             <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="Tribunal de Paris">
+                                <input type="checkbox" class="activity-input" data-label="Tribunal de Paris">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">Partante pour le Tribunal</span>
@@ -750,6 +752,9 @@
                         <span class="step-icon">🏋️</span>
                     </div>
                     <div class="step-body">
+                        <div class="step-image">
+                            <img src="https://via.placeholder.com/600x360?text=On+Air+Malakoff" alt="Salle de sport On Air Malakoff">
+                        </div>
                         <h3>On Air Malakoff – séance de sport</h3>
                         <p class="step-time">17h00 – 17h30</p>
                         <p>
@@ -766,12 +771,33 @@
                         </p>
                         <div class="activity-choice">
                             <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="séance de sport à On Air Malakoff et retour chez moi pour se doucher">
+                                <input type="checkbox" class="activity-input" data-label="séance de sport à On Air Malakoff et retour chez moi pour se doucher">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">OK pour On Air + retour douche</span>
                                 </span>
                             </label>
+                        </div>
+
+                        <!-- Choix programme lié au quiz Q2 -->
+                        <div class="activity-choice">
+                            <p class="step-time" style="margin-top:0.6rem;">Après le sport et la douche&nbsp;:</p>
+                            <div class="quiz-options">
+                                <label class="choice-pill">
+                                    <input type="radio" name="progAfterSport" class="program-choice" data-sync="q2-chill">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">On prend un peu de temps tranquille</span>
+                                    </span>
+                                </label>
+                                <label class="choice-pill">
+                                    <input type="radio" name="progAfterSport" class="program-choice" data-sync="q2-chain">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">On enchaîne vers courses + resto</span>
+                                    </span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -783,6 +809,9 @@
                         <span class="step-icon">✨</span>
                     </div>
                     <div class="step-body">
+                        <div class="step-image">
+                            <img src="https://via.placeholder.com/600x360?text=Courses+%2B+Resto+%2B+Bus" alt="Courses, restaurant et bus pour Amsterdam">
+                        </div>
                         <h3>Courses, restaurant et bus pour Amsterdam</h3>
 
                         <p class="step-time">20h30 – 21h00</p>
@@ -811,28 +840,9 @@
                         </p>
 
                         <div class="activity-choice">
+                            <!-- Courses -->
                             <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="dîner au restaurant Stellar by Ephemera">
-                                <span class="pill-visual">
-                                    <span class="pill-dot"></span>
-                                    <span class="pill-text">Partante pour Stellar by Ephemera</span>
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="activity-choice">
-                            <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="choisir un autre restaurant pour le soir">
-                                <span class="pill-visual">
-                                    <span class="pill-dot"></span>
-                                    <span class="pill-text">Plutôt un autre resto à choisir</span>
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="activity-choice">
-                            <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="petites courses après la douche et avant le resto">
+                                <input type="checkbox" class="activity-input" data-label="petites courses après la douche et avant le resto">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">OK pour les petites courses après la douche</span>
@@ -840,9 +850,30 @@
                             </label>
                         </div>
 
-                        <div class="activity-choice">
+                        <div class="activity-choice" style="margin-top:0.6rem;">
+                            <!-- Choix de resto : une seule sélection possible -->
+                            <p class="step-time">Pour le restaurant&nbsp;:</p>
+                            <div class="quiz-options">
+                                <label class="choice-pill">
+                                    <input type="radio" name="restoChoice" class="activity-input" data-label="dîner au restaurant Stellar by Ephemera">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">Stellar by Ephemera</span>
+                                    </span>
+                                </label>
+                                <label class="choice-pill">
+                                    <input type="radio" name="restoChoice" class="activity-input" data-label="choisir un autre restaurant pour le soir">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">Autre resto à choisir</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="activity-choice" style="margin-top:0.6rem;">
                             <label class="choice-pill">
-                                <input type="checkbox" class="activity-checkbox" data-label="bus de 23h à Bercy pour Amsterdam">
+                                <input type="checkbox" class="activity-input" data-label="bus de 23h à Bercy pour Amsterdam">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">OK pour le bus de 23h à Bercy</span>
@@ -851,6 +882,30 @@
                         </div>
                     </div>
                 </article>
+            </div>
+
+            <!-- Choix global du programme, lié au quiz Q1 -->
+            <div class="block-header" style="margin-top:1.6rem;">
+                <h2>Ton ressenti sur le programme</h2>
+                <p>Un choix ici remplira automatiquement la première question du quiz.</p>
+            </div>
+            <div class="activity-choice">
+                <div class="quiz-options">
+                    <label class="choice-pill">
+                        <input type="radio" name="programStyle" class="program-choice" data-sync="q1-full">
+                        <span class="pill-visual">
+                            <span class="pill-dot"></span>
+                            <span class="pill-text">Je suis partante pour tout le programme</span>
+                        </span>
+                    </label>
+                    <label class="choice-pill">
+                        <input type="radio" name="programStyle" class="program-choice" data-sync="q1-adjust">
+                        <span class="pill-visual">
+                            <span class="pill-dot"></span>
+                            <span class="pill-text">On garde l’esprit mais on ajustera</span>
+                        </span>
+                    </label>
+                </div>
             </div>
         </section>
 
@@ -884,7 +939,7 @@
             <div class="final-card">
                 <h2>Si l’idée te parle…</h2>
                 <p>
-                    Tu peux cocher ce qui te tente, répondre au petit quiz,
+                    Tu peux choisir ce qui te tente, laisser le programme remplir le quiz,
                     puis cliquer sur le bouton pour préparer un message.  
                     Ton “oui”, tes choix et tes réponses seront tous dans le même SMS.
                 </p>
@@ -897,14 +952,16 @@
                         <p class="quiz-label">1. Par rapport au programme général&nbsp;:</p>
                         <div class="quiz-options">
                             <label class="choice-pill">
-                                <input type="radio" name="q1" class="quiz-option" data-label="je suis partante pour le programme complet tel qu’il est">
+                                <input type="radio" name="q1" class="quiz-option" data-sync="q1-full"
+                                       data-label="je suis partante pour le programme complet tel qu’il est">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">Je suis partante pour tout</span>
                                 </span>
                             </label>
                             <label class="choice-pill">
-                                <input type="radio" name="q1" class="quiz-option" data-label="on garde l’esprit du programme mais on ajustera au fur et à mesure">
+                                <input type="radio" name="q1" class="quiz-option" data-sync="q1-adjust"
+                                       data-label="on garde l’esprit du programme mais on ajustera au fur et à mesure">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">On ajustera si besoin</span>
@@ -917,14 +974,16 @@
                         <p class="quiz-label">2. Après le sport à On Air&nbsp;:</p>
                         <div class="quiz-options">
                             <label class="choice-pill">
-                                <input type="radio" name="q2" class="quiz-option" data-label="je préfère qu’on prenne un peu de temps tranquille après la douche avant le resto">
+                                <input type="radio" name="q2" class="quiz-option" data-sync="q2-chill"
+                                       data-label="je préfère qu’on prenne un peu de temps tranquille après la douche avant le resto">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">On prend un peu de temps tranquille</span>
                                 </span>
                             </label>
                             <label class="choice-pill">
-                                <input type="radio" name="q2" class="quiz-option" data-label="on peut enchaîner assez directement vers les courses et le resto après la douche">
+                                <input type="radio" name="q2" class="quiz-option" data-sync="q2-chain"
+                                       data-label="on peut enchaîner assez directement vers les courses et le resto après la douche">
                                 <span class="pill-visual">
                                     <span class="pill-dot"></span>
                                     <span class="pill-text">On enchaîne vers courses + resto</span>
@@ -941,6 +1000,9 @@
                     <button type="button" class="button-main" id="prepare-message">
                         Préparer mon message
                     </button>
+                    <button type="button" class="button-main button-secondary" id="copy-message">
+                        Copier le texte
+                    </button>
                     <button type="button" class="button-main button-secondary" id="add-calendar">
                         Ajouter au calendrier
                     </button>
@@ -954,7 +1016,7 @@
                     </a>
                     <p class="sms-hint">
                         Le message sera adressé au 06 14 82 19 49.  
-                        Tu pourras bien sûr le modifier avant de l’envoyer.
+                        Si jamais le bouton SMS ne marche pas, tu peux copier le texte et le coller dans ton appli messages.
                     </p>
                 </div>
             </div>
@@ -970,10 +1032,14 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const prepareBtn = document.getElementById('prepare-message');
+        const copyBtn = document.getElementById('copy-message');
         const smsPreview = document.getElementById('sms-preview');
         const smsTextEl = document.getElementById('sms-text');
         const smsLink = document.getElementById('sms-send');
         const addCalendarBtn = document.getElementById('add-calendar');
+
+        const programChoices = document.querySelectorAll('.program-choice');
+        const quizRadios = document.querySelectorAll('.quiz-option');
 
         function buildNiceList(items) {
             if (items.length === 0) return "";
@@ -982,24 +1048,37 @@
             return items.slice(0, -1).join(", ") + " et " + items[items.length - 1];
         }
 
+        // Quand elle choisit dans le programme, ça coche le quiz correspondant
+        programChoices.forEach(function (pc) {
+            pc.addEventListener('change', function () {
+                if (!this.checked) return;
+                const syncId = this.getAttribute('data-sync');
+                if (!syncId) return;
+
+                quizRadios.forEach(function (qr) {
+                    if (qr.getAttribute('data-sync') === syncId) {
+                        qr.checked = true;
+                    }
+                });
+            });
+        });
+
         if (prepareBtn) {
             prepareBtn.addEventListener('click', function () {
-                const activityCheckboxes = document.querySelectorAll('.activity-checkbox');
-                const quizOptions = document.querySelectorAll('.quiz-option');
-
+                const activityInputs = document.querySelectorAll('.activity-input');
                 const selectedActivities = [];
                 const selectedQuiz = [];
 
-                activityCheckboxes.forEach(function (cb) {
-                    if (cb.checked) {
-                        const label = cb.getAttribute('data-label') || cb.value;
+                activityInputs.forEach(function (inp) {
+                    if (inp.checked) {
+                        const label = inp.getAttribute('data-label') || "";
                         if (label) selectedActivities.push(label);
                     }
                 });
 
-                quizOptions.forEach(function (cb) {
-                    if (cb.checked) {
-                        const label = cb.getAttribute('data-label') || cb.value;
+                quizRadios.forEach(function (qr) {
+                    if (qr.checked) {
+                        const label = qr.getAttribute('data-label') || "";
                         if (label) selectedQuiz.push(label);
                     }
                 });
@@ -1026,13 +1105,56 @@
 
                 const phone = "0614821949";
                 const encodedBody = encodeURIComponent(body);
-                const href = "sms:" + phone + "?body=" + encodedBody;
+                // Format qui marche mieux sur pas mal de téléphones
+                const href = "sms:" + phone + "&body=" + encodedBody;
                 smsLink.setAttribute("href", href);
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                const text = smsTextEl.textContent || "";
+                if (!text) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).catch(function () {
+                        // silencieux si ça échoue (http, vieux navigateur, etc.)
+                    });
+                }
             });
         }
 
         if (addCalendarBtn) {
             addCalendarBtn.addEventListener('click', function () {
+                // On adapte la ligne "restaurant" en fonction du choix
+                const restoSelected = document.querySelector('input[name="restoChoice"]:checked');
+                let restoLine;
+                if (restoSelected) {
+                    const label = restoSelected.getAttribute('data-label') || "";
+                    if (label.indexOf("Stellar") !== -1) {
+                        restoLine = "21h00-22h30 : restaurant Stellar by Ephemera";
+                    } else if (label.indexOf("autre restaurant") !== -1 || label.indexOf("autre resto") !== -1) {
+                        restoLine = "21h00-22h30 : restaurant à choisir ensemble";
+                    } else {
+                        restoLine = "21h00-22h30 : restaurant (à définir)";
+                    }
+                } else {
+                    restoLine = "21h00-22h30 : restaurant (à définir)";
+                }
+
+                const descLines = [
+                    "14h00-14h20 : chez toi (4 rue Edmond Rousse, Paris 14e)",
+                    "14h20-15h00 : trajet vers le Tribunal",
+                    "15h00-17h00 : Tribunal de Paris",
+                    "17h00-17h30 : trajet vers On Air Malakoff",
+                    "17h30-20h00 : séance de sport",
+                    "20h00-20h30 : retour chez toi pour se doucher",
+                    "20h30-21h00 : petites courses pour le voyage",
+                    restoLine,
+                    "22h30-23h00 : trajet vers Bercy et bus de 23h pour Amsterdam"
+                ];
+
+                const icsDescription = descLines.join("\\n");
+
                 const lines = [
                     "BEGIN:VCALENDAR",
                     "VERSION:2.0",
@@ -1043,7 +1165,7 @@
                     "DTSTART:20251128T140000",
                     "DTEND:20251128T230000",
                     "SUMMARY:Sortie avec Céline - Paris",
-                    "DESCRIPTION:14h00-14h20 : chez toi (4 rue Edmond Rousse, Paris 14e)\\n14h20-15h00 : trajet vers le Tribunal\\n15h00-17h00 : Tribunal de Paris\\n17h00-17h30 : trajet vers On Air Malakoff\\n17h30-20h00 : séance de sport\\n20h00-20h30 : retour chez toi pour se doucher\\n20h30-21h00 : petites courses pour le voyage\\n21h00-22h30 : restaurant (Stellar by Ephemera ou autre)\\n22h30-23h00 : trajet vers Bercy et bus de 23h pour Amsterdam",
+                    "DESCRIPTION:" + icsDescription,
                     "LOCATION:Paris",
                     "END:VEVENT",
                     "END:VCALENDAR"
