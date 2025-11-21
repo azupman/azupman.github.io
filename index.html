@@ -23,6 +23,7 @@
             --text-main: #171717;
             --text-soft: #4b5563;
             --accent: #f97373;
+            --accent-soft: #fde2e2;
             --border-subtle: #e5e7eb;
             --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
             --radius-large: 24px;
@@ -104,6 +105,7 @@
             font-size: 0.8rem;
             color: #4b5563;
             background: rgba(255, 255, 255, 0.9);
+            display: inline-block;
         }
 
         /* ------------------------------
@@ -310,6 +312,7 @@
             justify-content: center;
             font-size: 1.1rem;
             box-shadow: 0 10px 20px rgba(148, 163, 184, 0.35);
+            z-index: 2; /* Au-dessus de la ligne */
         }
 
         .step-body {
@@ -319,11 +322,12 @@
             border: 1px solid rgba(229,231,235,0.9);
         }
 
-        /* Style pour mettre en avant le restaurant */
+        /* MISE EN AVANT DU RESTAURANT (CSS spécifique) */
         .step-highlight .step-body {
             background: #fff;
             border-color: rgba(249, 115, 115, 0.3);
             box-shadow: 0 15px 30px rgba(15, 23, 42, 0.06);
+            border-width: 1px;
         }
 
         .step h3 {
@@ -363,7 +367,7 @@
 
         /* Image plus grande pour le restaurant */
         .step-image-large img {
-            height: 280px;
+            height: 280px; /* Plus impactant */
         }
 
         /* Pills */
@@ -780,4 +784,403 @@
                                 <label class="choice-pill">
                                     <input type="radio" name="progAfterSport" class="program-choice" data-sync="q2-chain">
                                     <span class="pill-visual">
-                                        <span class="pill-dot">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">On enchaîne vers courses + resto</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="step">
+                    <div class="step-meta">
+                        <span class="step-number">04</span>
+                        <span class="step-icon">🛍️</span>
+                    </div>
+                    <div class="step-body">
+                        <h3>Préparatifs & petites courses</h3>
+                        <p class="step-time">20h30 – 21h00</p>
+                        <p>
+                            Après la douche, petite session courses dans le quartier ou sur le trajet : de quoi avoir tout ce qu’il faut
+                            pour le trajet en bus (eau, snacks, trucs dont on a besoin pour la route).
+                        </p>
+                        <div class="activity-choice">
+                            <label class="choice-pill">
+                                <input type="checkbox" class="activity-input" data-label="petites courses après la douche">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">OK pour les petites courses</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="step step-highlight">
+                    <div class="step-meta">
+                        <span class="step-number">05</span>
+                        <span class="step-icon">🍽️</span>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-image step-image-large">
+                            <img src="https://www.sortiraparis.com/images/80/1462/834070-stellar-le-restaurant-immersif-a-paris-signe-ephemera-qui-nous-emmene-dans-l-espace.jpg" alt="Restaurant Stellar by Ephemera - Ambiance spatiale">
+                        </div>
+                        <h3>Dîner : Stellar by Ephemera</h3>
+
+                        <p class="step-time">21h00 – 22h30</p>
+                        <p>
+                            Je te propose <span>Stellar by Ephemera</span>, un restaurant immersif dans le 11ᵉ.
+                            Le décor te donne l’impression d’être dans une autre galaxie pendant qu’on mange,
+                            avec des projections, des planètes et une cuisine moderne.
+                        </p>
+                        <p>
+                            Adresse : 45 rue Saint-Sébastien, 75011 Paris.
+                        </p>
+
+                        <div class="activity-choice" style="margin-top:1rem;">
+                            <p class="step-time">Ton choix pour le resto&nbsp;:</p>
+                            <div class="quiz-options">
+                                <label class="choice-pill">
+                                    <input type="radio" name="restoChoice" class="activity-input" data-label="dîner au restaurant Stellar by Ephemera">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">Go pour Stellar !</span>
+                                    </span>
+                                </label>
+                                <label class="choice-pill">
+                                    <input type="radio" name="restoChoice" class="activity-input" data-label="choisir un autre restaurant pour le soir">
+                                    <span class="pill-visual">
+                                        <span class="pill-dot"></span>
+                                        <span class="pill-text">On choisit un autre resto</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="step">
+                    <div class="step-meta">
+                        <span class="step-number">06</span>
+                        <span class="step-icon">🚌</span>
+                    </div>
+                    <div class="step-body">
+                        <h3>Départ pour Amsterdam</h3>
+                        <p class="step-time">22h30 – 23h00</p>
+                        <p>
+                            Trajet tranquille vers la gare de Bercy. On s'installe pour le bus de nuit.
+                        </p>
+                        <div class="activity-choice">
+                            <label class="choice-pill">
+                                <input type="checkbox" class="activity-input" data-label="bus de 23h à Bercy pour Amsterdam">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">OK pour le bus de 23h</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="block-header" style="margin-top:1.6rem;">
+                <h2>Ton ressenti sur le programme</h2>
+                <p>Un choix ici remplira automatiquement la première question du quiz.</p>
+            </div>
+            <div class="activity-choice">
+                <div class="quiz-options">
+                    <label class="choice-pill">
+                        <input type="radio" name="programStyle" class="program-choice" data-sync="q1-full">
+                        <span class="pill-visual">
+                            <span class="pill-dot"></span>
+                            <span class="pill-text">Je suis partante pour tout le programme</span>
+                        </span>
+                    </label>
+                    <label class="choice-pill">
+                        <input type="radio" name="programStyle" class="program-choice" data-sync="q1-adjust">
+                        <span class="pill-visual">
+                            <span class="pill-dot"></span>
+                            <span class="pill-text">On garde l’esprit mais on ajustera</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="block block-details">
+            <div class="block-header">
+                <h2>Infos pratiques</h2>
+            </div>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <span class="detail-label">Jour</span>
+                    <p>Vendredi 28, après-midi et soirée.</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-label">Point de départ</span>
+                    <p>Chez toi, 4 rue Edmond Rousse, Paris 14ᵉ, à 14h.</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-label">Restaurant</span>
+                    <p>Option 1&nbsp;: Stellar by Ephemera (Paris 11). Option 2&nbsp;: un autre resto à choisir ensemble.</p>
+                </div>
+                <div class="detail-card">
+                    <span class="detail-label">Fin de journée</span>
+                    <p>Bus de nuit à 23h à la gare de Bercy, direction Amsterdam.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block block-final">
+            <div class="final-card">
+                <h2>Si l’idée te parle…</h2>
+                <p>
+                    Tu peux choisir ce qui te tente, laisser le programme remplir le quiz,
+                    puis cliquer sur le bouton pour préparer un message.  
+                    Ton “oui”, tes choix et tes réponses seront tous dans le même SMS.
+                </p>
+
+                <div class="quiz">
+                    <h3>Mini-quiz rapide</h3>
+
+                    <div class="quiz-question">
+                        <p class="quiz-label">1. Par rapport au programme général&nbsp;:</p>
+                        <div class="quiz-options">
+                            <label class="choice-pill">
+                                <input type="radio" name="q1" class="quiz-option" data-sync="q1-full"
+                                       data-label="je suis partante pour le programme complet tel qu’il est">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">Je suis partante pour tout</span>
+                                </span>
+                            </label>
+                            <label class="choice-pill">
+                                <input type="radio" name="q1" class="quiz-option" data-sync="q1-adjust"
+                                       data-label="on garde l’esprit du programme mais on ajustera au fur et à mesure">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">On ajustera si besoin</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p class="quiz-label">2. Après le sport à On Air&nbsp;:</p>
+                        <div class="quiz-options">
+                            <label class="choice-pill">
+                                <input type="radio" name="q2" class="quiz-option" data-sync="q2-chill"
+                                       data-label="je préfère qu’on prenne un peu de temps tranquille après la douche avant le resto">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">On prend un peu de temps tranquille</span>
+                                </span>
+                            </label>
+                            <label class="choice-pill">
+                                <input type="radio" name="q2" class="quiz-option" data-sync="q2-chain"
+                                       data-label="on peut enchaîner assez directement vers les courses et le resto après la douche">
+                                <span class="pill-visual">
+                                    <span class="pill-dot"></span>
+                                    <span class="pill-text">On enchaîne vers courses + resto</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-actions">
+                    <p class="form-intro">
+                        Quand tu es prête, tu peux cliquer ici&nbsp;:
+                    </p>
+                    <button type="button" class="button-main" id="prepare-message">
+                        Préparer mon message
+                    </button>
+                    <button type="button" class="button-main button-secondary" id="copy-message">
+                        Copier le texte
+                    </button>
+                    <button type="button" class="button-main button-secondary" id="add-calendar">
+                        Ajouter au calendrier
+                    </button>
+                </div>
+
+                <div id="sms-preview" class="sms-preview hidden">
+                    <p class="sms-label">Texte du message</p>
+                    <p class="sms-text" id="sms-text"></p>
+                    <a id="sms-send" class="button-main sms-button" href="sms:0614821949">
+                        Ouvrir l’appli SMS
+                    </a>
+                    <p class="sms-hint">
+                        Le message sera adressé au 06 14 82 19 49.  
+                        Si jamais le bouton SMS ne marche pas, tu peux copier le texte et le coller dans ton appli messages.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        Site créé spécialement pour toi. 🐼
+    </footer>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const prepareBtn = document.getElementById('prepare-message');
+        const copyBtn = document.getElementById('copy-message');
+        const smsPreview = document.getElementById('sms-preview');
+        const smsTextEl = document.getElementById('sms-text');
+        const smsLink = document.getElementById('sms-send');
+        const addCalendarBtn = document.getElementById('add-calendar');
+
+        const programChoices = document.querySelectorAll('.program-choice');
+        const quizRadios = document.querySelectorAll('.quiz-option');
+
+        function buildNiceList(items) {
+            if (items.length === 0) return "";
+            if (items.length === 1) return items[0];
+            if (items.length === 2) return items[0] + " et " + items[1];
+            return items.slice(0, -1).join(", ") + " et " + items[items.length - 1];
+        }
+
+        // Programme → coche automatiquement le quiz
+        programChoices.forEach(function (pc) {
+            pc.addEventListener('change', function () {
+                if (!this.checked) return;
+                const syncId = this.getAttribute('data-sync');
+                if (!syncId) return;
+
+                quizRadios.forEach(function (qr) {
+                    if (qr.getAttribute('data-sync') === syncId) {
+                        qr.checked = true;
+                    }
+                });
+            });
+        });
+
+        if (prepareBtn) {
+            prepareBtn.addEventListener('click', function () {
+                const activityInputs = document.querySelectorAll('.activity-input');
+                const selectedActivities = [];
+                const selectedQuiz = [];
+
+                activityInputs.forEach(function (inp) {
+                    if (inp.checked) {
+                        const label = inp.getAttribute('data-label') || "";
+                        if (label) selectedActivities.push(label);
+                    }
+                });
+
+                quizRadios.forEach(function (qr) {
+                    if (qr.checked) {
+                        const label = qr.getAttribute('data-label') || "";
+                        if (label) selectedQuiz.push(label);
+                    }
+                });
+
+                let body = "Salut, pour le vendredi 28 je suis partante. 😊";
+
+                if (selectedActivities.length > 0) {
+                    const list = buildNiceList(selectedActivities);
+                    body += "\n\nLes moments qui me tentent : " + list + ".";
+                } else {
+                    body += "\n\nLe programme me va dans l’idée, on verra ensemble pour les détails.";
+                }
+
+                if (selectedQuiz.length > 0) {
+                    const quizList = buildNiceList(selectedQuiz);
+                    body += "\n\nPour l’organisation : " + quizList + ".";
+                }
+
+                body += "\n\nOn se retrouve bien chez moi à 14h pour que tu déposes ta valise, " +
+                        "et c’est bon pour le bus de 23h à Bercy pour Amsterdam.";
+
+                smsTextEl.textContent = body;
+                smsPreview.classList.remove('hidden');
+
+                const phone = "0614821949";
+                const encodedBody = encodeURIComponent(body);
+                const href = "sms:" + phone + "&body=" + encodedBody;
+                smsLink.setAttribute("href", href);
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function () {
+                const text = smsTextEl.textContent || "";
+                if (!text) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).catch(function () {
+                        // silencieux si ça échoue
+                    });
+                }
+            });
+        }
+
+        if (addCalendarBtn) {
+            addCalendarBtn.addEventListener('click', function () {
+                const restoSelected = document.querySelector('input[name="restoChoice"]:checked');
+                let restoLine;
+                if (restoSelected) {
+                    const label = restoSelected.getAttribute('data-label') || "";
+                    if (label.indexOf("Stellar") !== -1) {
+                        restoLine = "21h00-22h30 : Dîner au restaurant Stellar by Ephemera";
+                    } else if (label.indexOf("autre restaurant") !== -1 || label.indexOf("autre resto") !== -1) {
+                        restoLine = "21h00-22h30 : Dîner au restaurant (à choisir ensemble)";
+                    } else {
+                        restoLine = "21h00-22h30 : Restaurant (à définir)";
+                    }
+                } else {
+                    restoLine = "21h00-22h30 : Restaurant (à définir)";
+                }
+
+                const descLines = [
+                    "14h00-14h20 : chez toi (4 rue Edmond Rousse, Paris 14e)",
+                    "14h20-15h00 : trajet vers le Tribunal",
+                    "15h00-17h00 : Tribunal de Paris",
+                    "17h00-17h30 : trajet vers On Air Malakoff",
+                    "17h30-20h00 : séance de sport",
+                    "20h00-20h30 : retour chez toi pour se doucher",
+                    "20h30-21h00 : petites courses",
+                    restoLine,
+                    "22h30-23h00 : trajet vers Bercy et bus de 23h pour Amsterdam"
+                ];
+
+                const icsDescription = descLines.join("\\n");
+
+                const lines = [
+                    "BEGIN:VCALENDAR",
+                    "VERSION:2.0",
+                    "PRODID:-//azupman//SortieCeline//FR",
+                    "BEGIN:VEVENT",
+                    "UID:" + Date.now() + "@azupman",
+                    "DTSTAMP:20251120T120000Z",
+                    "DTSTART:20251128T140000",
+                    "DTEND:20251128T230000",
+                    "SUMMARY:Sortie avec Céline - Paris",
+                    "DESCRIPTION:" + icsDescription,
+                    "LOCATION:Paris",
+                    "END:VEVENT",
+                    "END:VCALENDAR"
+                ];
+
+                const icsContent = lines.join("\r\n");
+                const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "sortie-avec-celine.ics";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                setTimeout(function () {
+                    URL.revokeObjectURL(url);
+                }, 2000);
+            });
+        }
+    });
+</script>
+</body>
+</html>
